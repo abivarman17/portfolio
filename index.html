@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BMI Calculator</title>
+<style>
+  body {
+    background-image: url("lake-sunset-4k_1540132026.jpg.webp"); /* Replace with the actual image path */
+    background-size: cover;
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  #calculator {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 70px;
+    border-radius: 10px;
+    margin: 100px auto;
+    width: 700px;
+    box-shadow: 0 0 20px blue;
+  }
+
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body> 
+<div id="calculator">
+  <h1>BMI Calculator</h1>
+  <label for="height">Your Height (cm):</label>
+  <input type="number" id="height" placeholder="Enter your height">
+  <br>
+  <br>
+  <label for="weight">Your Weight (kg):</label>
+  <input type="number" id="weight" placeholder="Enter your weight">
+  <br>
+  <br>
+  <button onclick="calculateBMI()">Calculate</button>
+  <p id="result"></p>
+</div>
+
+<script>
+    function calculateBMI() {
+      const height = document.getElementById("height").value;
+      const weight = document.getElementById("weight").value;
+    
+      if (height !== "" && weight !== "") {
+        const bmi = weight / (height / 100 * height / 100);
+        const bmiValue = bmi.toFixed(2);
+        let resultMessage;
+        if (bmi < 18.5) {
+          resultMessage = `Your BMI is ${bmiValue} (Underweight).`;
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          resultMessage = `Your BMI is ${bmiValue} (Normal weight).`;
+        } else {
+          resultMessage = `Your BMI is ${bmiValue} (Overweight).`;
+        }
+        document.getElementById("result").innerHTML = resultMessage;
+      } else {
+        document.getElementById("result").innerHTML = "Please enter both height and weight.";
+      }
+    }
+    </script>
+    
+
+</body>
+</html>
